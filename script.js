@@ -1,51 +1,68 @@
-var photoimg = "";
+let photoimg = "";
 // Upload image to the directory
-$(document).ready(function() {
-    $('#photoimg').change(function(){
-        var formData = new FormData();
-        var files = $('#photoimg')[0].files;
-        formData.append('photo', files[0]);
-        $.ajax({
-            url: "upload.php",
-            type: "POST",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(response){
-              photoimg = response;
-            }
-        });
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  const photoInput = document.getElementById("photoimg");
+
+  photoInput.addEventListener("change", () => {
+    const formData = new FormData();
+    const files = photoInput.files;
+
+    formData.append("photo", files[0]);
+
+    fetch("upload.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.text())
+      .then((response) => {
+        photoimg = response;
+      })
+      .catch((error) => {
+        console.error("Error uploading photo:", error);
+      });
+  });
 });
 
+
 // Real time preview twibbon
-setInterval(function(){
+function preview() {
+  const twibbonimg = document.getElementById("twibbonimg").value;
+  // const width = document.getElementById("width").value + "%"; // Ambil nilai input range dan tambahkan '%'
+  // const height = document.getElementById("height").value + "%"; // Ambil nilai input range dan tambahkan '%'
+  const wh = document.getElementById("wh").value + "%"; // Ambil nilai input range dan tambahkan '%'
+  const top = document.getElementById("top").value + "px"; // Ambil nilai input range dan tambahkan 'px'
+  const left = document.getElementById("left").value + "px"; // Ambil nilai input range dan tambahkan 'px'
+  
+  document.getElementById("photo").src = photoimg;
+  document.getElementById("twibbon").src = twibbonimg;
+  document.getElementById("photo").style.width = wh;
+  document.getElementById("photo").style.height = wh;
+  document.getElementById("photo").style.top = top;
+  document.getElementById("photo").style.left = left;
+}
+
+setInterval(() => {
   preview();
 }, 0);
 
-function preview(){
-  var twibbonimg = $('#twibbonimg').val();
-  var width = $('#width').val() + 'px'; // Ambil nilai input range dan tambahkan '%'
-  var height = $('#height').val() + 'px'; // Ambil nilai input range dan tambahkan '%'
-  var wh = $('#wh').val() + '%'; // Ambil nilai input range dan tambahkan '%'
-  var top = $('#top').val() + 'px'; // Ambil nilai input range dan tambahkan 'px'
-  var left = $('#left').val() + 'px'; // Ambil nilai input range dan tambahkan 'px'
-  $("#photo").attr("src", photoimg);
-  $('#twibbon').attr("src", twibbonimg);
-  $('#photo').css("width", wh);
-  $('#photo').css("height", wh);
-  $('#photo').css("top", top);
-  $('#photo').css("left", left);
-}
-
 // Download twibbon
-var element = $(".twibbon");
-$("#download").on('click', function(){
+document.getElementById("download").addEventListener("click", () => {
+  const element = document.querySelector(".twibbon");
+
   html2canvas(element, {
-    onrendered: function(canvas) {
-      var imageData = canvas.toDataURL("image/png");
-      var newData = imageData.replace(/^data:image\/png/, "data:application/octet-stream");
-      $("#download").attr("download", "image.png").attr("href", newData);
-    }
+    onrendered: (canvas) => {
+      const imageData = canvas.toDataURL("image/png");
+      const newData = imageData.replace(/^data:image\/png/, "data:application/octet-stream");
+      const a = document.createElement("a");
+      a.href = newData;
+      a.download = "image.png";
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    },
   });
 });
+
+
+
