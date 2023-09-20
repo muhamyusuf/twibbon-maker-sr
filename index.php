@@ -12,13 +12,13 @@
     />
   </head>
 
-  <body class="bg-gradient-to-tr from-white to-purple-900 bg-no-repeat px-2">
+  <body class="px-2 bg-no-repeat bg-gradient-to-tr from-white to-purple-900">
     <div class="max-w-[1440px] mx-auto pb-20">
       <div class="w-full min-h-[400px] flex justify-center items-center">
-        <h1 class="font-bold text-7xl text-center">Twibbon Maker</h1>
+        <h1 class="font-bold text-center text-7xl">Twibbon Maker</h1>
       </div>
 
-      <div class="flex items-center justify-center flex-col w-full">
+      <div class="flex flex-col items-center justify-center w-full">
         <h2 class="font-bold">Get Started !</h2>
         <h2 class="font-bold">Upload your photo</h2>
 
@@ -55,7 +55,7 @@
         </label>
       </div>
 
-      <div class="w-full flex justify-center items-center flex-col mt-10">
+      <div class="flex flex-col items-center justify-center w-full mt-10">
         <label
           for="twibbonimg"
           class="block mb-2 text-sm font-bold text-gray-900"
@@ -71,7 +71,7 @@
       </div>
 
       <div
-        class="w-full mt-20 flex flex-wrap justify-center gap-10 items-center md:flex-row flex-col"
+        class="flex flex-col flex-wrap items-center justify-center w-full gap-10 mt-20 md:flex-row"
       >
         <div
           class="setting-image p-5 w-full max-w-[600px] flex-1 flex flex-col gap-5"
@@ -84,7 +84,7 @@
               min="0"
               max="100"
               value="50"
-              class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-700"
+              class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
             />
           </div>
 
@@ -96,7 +96,7 @@
               min="-300"
               max="300"
               value="50"
-              class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-700"
+              class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
             />
           </div>
 
@@ -108,7 +108,7 @@
               min="-300"
               max="300"
               value="50"
-              class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-700"
+              class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
             />
           </div>
 
@@ -120,7 +120,7 @@
               min="-500"
               max="500"
               value="0"
-              class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-700"
+              class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
             />
           </div>
 
@@ -132,12 +132,12 @@
               min="-500"
               max="500"
               value="0"
-              class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-700"
+              class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
             />
           </div>
         </div>
 
-        <div class="card flex-1 flex justify-center items-center flex-col">
+        <div class="flex flex-col items-center justify-center flex-1 card">
           <div
             class="twibbon rounded-md overflow-hidden max-w-[400px] max-h-[400px]"
           >
