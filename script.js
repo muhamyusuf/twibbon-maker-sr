@@ -27,16 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
 // Real time preview twibbon
 function preview() {
   const twibbonimg = document.getElementById("twibbonimg").value;
-  // const width = document.getElementById("width").value + "%"; // Ambil nilai input range dan tambahkan '%'
-  // const height = document.getElementById("height").value + "%"; // Ambil nilai input range dan tambahkan '%'
-  const wh = document.getElementById("wh").value + "%"; // Ambil nilai input range dan tambahkan '%'
+  const width = document.getElementById("width").value + "%"; // Ambil nilai input range dan tambahkan '%'
+  const height = document.getElementById("height").value + "%"; // Ambil nilai input range dan tambahkan '%'
+  const wh = document.getElementById("wh").value; // Ambil nilai input range dan tambahkan '%'
   const top = document.getElementById("top").value + "px"; // Ambil nilai input range dan tambahkan 'px'
   const left = document.getElementById("left").value + "px"; // Ambil nilai input range dan tambahkan 'px'
   
   document.getElementById("photo").src = photoimg;
   document.getElementById("twibbon").src = twibbonimg;
-  document.getElementById("photo").style.width = wh;
-  document.getElementById("photo").style.height = wh;
+  document.getElementById("photo").style.width = width;
+  document.getElementById("photo").style.height = height;
+  document.getElementById("photo").style.transform = `scale(${wh / 100})`;
   document.getElementById("photo").style.top = top;
   document.getElementById("photo").style.left = left;
 }
@@ -50,6 +51,9 @@ document.getElementById("download").addEventListener("click", () => {
   const element = document.querySelector(".twibbon");
 
   html2canvas(element, {
+    width: 1024,
+    height: 1024,
+    scale: 1,
     onrendered: (canvas) => {
       const imageData = canvas.toDataURL("image/png");
       const newData = imageData.replace(/^data:image\/png/, "data:application/octet-stream");

@@ -22,10 +22,19 @@
           <label for="photoimg" class="form-label">Upload Photo</label>
           <input type="file" id="photoimg" class="form-control">
           <br>
+
           <label for="wh" class="form-label">Resize</label>
-          <input type="range" id="wh" class="form-range" min="0" max="100" value="40">
+          <input type="text" id="wh" class="form-range" min="0" max="200" value="40">
+
+          <label for="width" class="form-label">Width</label>
+          <input type="range" id="width" class="form-range" min="0" max="100" value="40">
+
+          <label for="height" class="form-label">Height</label>
+          <input type="range" id="height" class="form-range" min="0" max="100" value="40">
+
           <label for="top" class="form-label">Top</label>
           <input type="range" id="top" class="form-range" min="-500" max="500" value="0">
+
           <label for="left" class="form-label">Left</label>
           <input type="range" id="left" class="form-range" min="-500" max="500" value="0">
         </div>
